@@ -16,8 +16,11 @@ export class AuthNoticeComponent implements OnInit {
 	ngOnInit() {
 		this.authNoticeService.onNoticeChanged$.subscribe(
 			(notice: AuthNotice) => {
-				this.message = notice.message;
-				this.type = notice.type;
+				if(notice != null){
+					this.message = notice.message;
+					this.type = notice.type;
+				}
+			
 			}
 		);
 	}

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
+import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { OldPwdValidators } from "./password-validation";
 
 @Component({
     selector: 'm-changepassword',
@@ -11,9 +12,11 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   
     constructor(fb: FormBuilder){
       this.form1 = fb.group({
-        'oldPwd': ['',Validators.required],
+        'oldPwd': ['',Validators.required,OldPwdValidators.shouldBe1234],
         'newPwd': ['',Validators.required],
         'confirmPwd': ['',Validators.required]
+      }, {
+        validator: OldPwdValidators.matchPwds
       });
     }
   

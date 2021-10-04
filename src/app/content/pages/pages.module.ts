@@ -10,7 +10,7 @@ import { MailModule } from './components/apps/mail/mail.module';
 import { ECommerceModule } from './components/apps/e-commerce/e-commerce.module';
 import { CoreModule } from '../../core/core.module';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 import { TranscriptionComponent } from './components/transcription/transcription.component';
@@ -36,6 +36,7 @@ import { ChangepasswordComponent } from './header/password/changepassword.compon
 		MailModule,
 		ECommerceModule,
 		AngularEditorModule,
+		ReactiveFormsModule
 	],
 	providers: []
 })

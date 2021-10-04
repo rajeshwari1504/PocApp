@@ -6,6 +6,7 @@ import { NgxPermissionsGuard } from 'ngx-permissions';
 import { ProfileComponent } from './header/profile/profile.component';
 import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 import { TranscriptionComponent } from './components/transcription/transcription.component';
+import { ChangepasswordComponent } from './header/password/changepassword.component';
 
 const routes: Routes = [
 	{
@@ -67,6 +68,10 @@ const routes: Routes = [
 			{
 				path: 'profile',
 				component: ProfileComponent
+			},
+			{
+				path: 'Changepassword',
+				component: ChangepasswordComponent
 			}
 		]
 	},

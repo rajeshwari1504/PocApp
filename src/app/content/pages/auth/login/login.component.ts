@@ -58,9 +58,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 			this.authService.login(this.login).subscribe(response => {
 				if (typeof response !== 'undefined') {
 					this.router.navigate(['/']);
-				} else {
-					console.log("hello");
-					this.authNoticeService.setNotice(this.translate.instant('AUTH.INPUT.INVALID_LOGIN'), 'error');
+					localStorage.setItem('userData',JSON.stringify(response));
 				}
 				this.spinner.active = false;
 				this.cdr.detectChanges();
@@ -77,10 +75,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 	ngOnInit(): void {
 		// demo message to show
 		if (!this.authNoticeService.onNoticeChanged$.getValue()) {
-			const initialNotice = `Use account
-			<strong>admin@demo.com</strong> and password
-			<strong>demo</strong> to continue.`;
-			this.authNoticeService.setNotice(initialNotice, 'success');
+			// const initialNotice = `Use account
+			// <strong>admin@demo.com</strong> and password
+			// <strong>demo</strong> to continue.`;
+			// this.authNoticeService.setNotice( 'success');
 		}
 	}
 

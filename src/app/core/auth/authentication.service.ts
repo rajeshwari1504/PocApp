@@ -10,6 +10,10 @@ import { UtilsService } from '../services/utils.service';
 import { AccessData } from './access-data';
 import { Credential, Login } from './credential';
 import { Router } from '@angular/router';
+
+import { stringify } from 'querystring';
+import { User } from '../../content/pages/header/userdata.model';
+
 export interface loginData {
 	id: string,
 	password:string
@@ -21,6 +25,7 @@ export class AuthenticationService implements AuthService {
 	API_ENDPOINT_LOGIN = '/login';
 	API_ENDPOINT_REFRESH = '/refresh';
 	API_ENDPOINT_REGISTER = '/register';
+
 	user=new BehaviorSubject<any>(null);
 
 	public onCredentialUpdated$: Subject<AccessData>;
@@ -105,6 +110,7 @@ export class AuthenticationService implements AuthService {
 	 * Submit login request
 	 * @param {Credential} credential
 	 * @param {Login} login
+	 * 
 	 * @returns {Observable<any>}
 	 */
 	// public login(credential: Credential): Observable<any> {
@@ -142,7 +148,12 @@ export class AuthenticationService implements AuthService {
 		localStorage.removeItem('userData');
 		this.router.navigate(['/login'])
 	  }
-	 
+	  
+	  updateData(id:any,data: any){
+		// this.userdata[inedx] = newdata;
+		  return this.http.post<User>("http://localhost:3000/update-emp",data)
+		  
+	  }
 
 	/**
 	 * Handle Http operation that failed.

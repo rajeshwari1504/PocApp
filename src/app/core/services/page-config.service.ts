@@ -24,4 +24,6 @@ export class PageConfigService {
 			'config.' + this.router.url.substring(1).replace(/\//g, '.')
 		);
 	}
+	
+
 }

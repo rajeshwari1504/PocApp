@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../../core/auth/authentication.service';
+import { User } from '../userdata.model';
+
 
 @Component({
   selector: 'm-profile',
@@ -9,21 +11,40 @@ import { AuthenticationService } from '../../../../core/auth/authentication.serv
 })
 export class ProfileComponent implements OnInit {
    userInfo : any;
-   constructor(){
+   constructor(private router:Router,private authservice:AuthenticationService){
     
   }
+  Updatedata: User = {
+    name: '',
+    description: '',
+    id: 0,
+    joiningdata: 0
+  };
   ngOnInit() {
     let userData: any = window.localStorage.getItem('userData');
     this.userInfo = JSON.parse(userData);        
     console.log(this.userInfo.id);
+   
+  }
+  onChangepassword(){
+    this.router.navigate(['/Changepassword']);
+  }
+  onupdatedata():void{
+    const data = {
+      name: this.Updatedata.name,
+      description: this.Updatedata.description,
+      joiningdata:this.Updatedata.joiningdata
+    };
+    this.authservice.updateData(this.Updatedata.id,data)
+      .subscribe(
+        response => {
+          console.log(response);
+          },
+        error => {
+          console.log(error);
+        });
+  }
     
   }
- 
-  // onLogOut(){
-  //   this.authService.logout();
 
-  // }
-  // onEmployee(){
-  //  this.router.navigate(['/employee']);
-  // }
-}
+
