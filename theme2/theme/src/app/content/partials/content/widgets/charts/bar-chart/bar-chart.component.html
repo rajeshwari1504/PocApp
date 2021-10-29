@@ -1,0 +1,14 @@
+<div class="m-widget14">
+	<div class="chart-container" *ngIf="chartReady">
+		<canvas baseChart  width="150" height="100" 
+		 
+			[datasets]="barChartData"
+			[labels]="barChartLabels"
+			[options]="barChartOptions"
+			[legend]="barChartLegend"
+			[chartType]="barChartType"
+			(chartHover)="chartHovered($event)"
+			(chartClick)="chartClicked($event)"> 
+	</canvas> 
+	</div> 
+</div>

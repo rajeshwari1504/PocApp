@@ -1,0 +1,129 @@
+<!--Begin::Section-->
+<!-- <div class="row">
+	<div class="col-xl-4">
+		<m-finance-stats></m-finance-stats>
+	</div>
+	<div class="col-xl-4">
+		<m-blog></m-blog>
+	</div>
+	<div class="col-xl-4">
+		<m-packages></m-packages>
+	</div>
+</div> -->
+<!--End::Section-->
+
+<!--Begin::Section-->
+<div class="m-portlet">
+	<div class="m-portlet__body m-portlet__body--no-padding">
+		<div class="row m-row--no-padding m-row--col-separator-xl">
+			<div class="col-xl-4">
+				<m-stat></m-stat>
+			</div>
+			<div class="col-xl-4">
+				<m-bar-chart></m-bar-chart>
+			</div>
+			<div class="col-xl-4">
+				<m-doughnut-chart></m-doughnut-chart>
+			</div>
+		</div>
+	</div>
+</div>
+<!--End::Section-->
+
+<!--Begin::Section-->
+<!-- <div class="row">
+	<div class="col-xl-6">
+		<m-tasks></m-tasks>
+	</div>
+	<div class="col-xl-6">
+		<m-support-tickets></m-support-tickets>
+	</div>
+</div> -->
+<!--End::Section-->
+
+<!--Begin::Section-->
+<!-- <div class="row">
+	<div class="col-xl-6">
+		<m-recent-activities></m-recent-activities>
+	</div>
+	<div class="col-xl-6">
+		<m-recent-notifications></m-recent-notifications>
+	</div>
+</div> -->
+<!--End::Section-->
+
+<!--Begin::Section-->
+<!-- <div class="row">
+	<div class="col-xl-8">
+		<m-data-table></m-data-table>
+	</div>
+	<div class="col-xl-4">
+		<m-audit-log></m-audit-log>
+	</div>
+</div> -->
+<!--End::Section-->
+
+<!--Begin::Section-->
+<!-- <div class="row">
+	<div class="col-xl-8">
+		<m-best-seller></m-best-seller>
+	</div>
+	<div class="col-xl-4">
+		<m-author-profit></m-author-profit>
+	</div>
+</div> -->
+<!--End::Section-->
+<!-- <div class="m-portlet"> -->
+<div class="row">
+	<div class="col-xl-6">
+		<m-portlet>
+			<ng-container mPortletHeadTitle>
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text">
+						User Salary
+					</h3>
+				</div>
+			</ng-container>
+         	<ng-container mPortletBody>
+				<div perfectScrollbar style="max-height:300px;"
+					class="mat-table__wrapper mat-table__wrapper--dashboard">
+					<table class="ex1" mat-table class="lmat-elevation-z8" matSort (matSortChange)="sortData($event)">
+						<ng-container>
+							<tr class="bold_text">
+								<td mat-header-cell mat-sort-header>Date</td>
+								<!-- <th mat-sort-header="salarydate">Date</th> -->
+								<td mat-header-cell mat-sort-header="amount">Salay</td>
+								<td mat-header-cell mat-sort-header="salarymonth">Month</td>
+							</tr>
+						</ng-container>
+						<hr class="beautiful-line">
+						<tr *ngFor="let user of salaryInfo ">
+							<td mat-cell class="mat-column-vinCode">{{user.salarydate | date:'yyyy-MM-dd'}} </td>
+							<td>{{user.amount}} </td>
+							<td>{{user.salarymonth}} </td>
+						</tr>
+					</table>
+				</div>
+			</ng-container>
+		</m-portlet>
+
+	</div>
+	<div class="col-xl-6">
+		<m-portlet>
+			<ng-container mPortletHeadTitle>
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text">
+						Salary Share
+					</h3>
+				</div>
+			</ng-container>
+			<ng-container mPortletBody>
+				<span class="m-widget14__desc">
+					Employee Data Between Salary and Month
+				</span>
+				<!-- <m-bar-chart [barChartLabels]="lable" [barChartData]="data" ></m-bar-chart> -->
+				<m-bar-chart  ></m-bar-chart>
+			</ng-container>
+		</m-portlet>
+	</div>
+</div>

@@ -1,0 +1,58 @@
+body {
+  font-family: "Open Sans", helvetica, arial;
+  }
+ table{
+  width: 400px; /* For Responsive design set 100% */
+  border-collapse: collapse;
+  margin: 30px 0px 30px;
+  font-size: 14px;
+  }
+ table tr {
+  height: 40px;
+  margin: left 100px;;
+  }
+ table th {
+  font-size: 13px;
+ }
+ table td, th {
+  /* padding: 6px 6px 6px 10px; */
+  /* border: 1px solid; */
+  text-align:center;
+ }
+ .bold_text {
+  font-weight: initial;
+}
+hr.beautiful-line{
+  border-top: 1px solid lightgrey; 
+ width: 260%;
+}
+table.ex1 {
+  padding-top: 10px;
+}
+ /* CSS3 Zebra Striping */
+ /* table tr:nth-of-type(odd) {
+  /* background: #eee; */
+ /* }  */
+   
+ .css-serial {
+  counter-reset: serial-number; /* Set the serial number counter to 0 */
+ }
+ .css-serial td:first-child:before {
+  counter-increment: serial-number; /* Increment the serial number counter */
+  content: counter(serial-number); /* Display the counter */
+ }
+ /* .col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+.form-group {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+} */
