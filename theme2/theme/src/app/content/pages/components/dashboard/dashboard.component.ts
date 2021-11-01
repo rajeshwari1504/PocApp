@@ -1,6 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { merge, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -16,20 +16,27 @@ import {MatSort} from '@angular/material';
 import {MatPaginator} from '@angular/material';
 import {MatTableDataSource} from '@angular/material';
 
+
 @Component({
 	selector: 'm-dashboard',
 	templateUrl: './dashboard.component.html',
 	styleUrls: ['./dashboard.component.css'],
-	//  changeDetection: ChangeDetectionStrategy.OnPush
+	//   changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class DashboardComponent implements OnInit {
 
+	public lable =[]
+    public datachart = []
+	sortOrder: string = 'asc';
+	sortColumn: string = 'salarydate';
 	constructor(
 		private router: Router,
 		private configService: LayoutConfigService,
 		private subheaderService: SubheaderService,
 		private authService :AuthenticationService,
 		private datePipe: DatePipe,
+		private _zone:NgZone
 	
 	) {
 		// this.subheaderService.setTitle('Dashboard');
@@ -46,35 +53,48 @@ export class DashboardComponent implements OnInit {
 		salarymonth: '' }
 	]
 	 ngOnInit(): void {
-		this.salarydata();
-	
+    	this.salarydata();
 	}
 
      /* UI */
-
-	  lable=[]
-	  data=[]
-      
-     
-       salarydata(){
-		this.date = this.datePipe.transform(new Date(), 'yyyy/MM/dd');
+      salarydata(){
+	    this.date = this.datePipe.transform(new Date(), 'yyyy/MM/dd');
 		let authObs:Observable<Salary[]>;
 		let userData: any = window.localStorage.getItem('userData');
 		this.userInfo = JSON.parse(userData);
 		authObs= this.authService.salaryList(this.userInfo.id)
 		authObs.subscribe((data:Data[]) => {
 			this.salaryInfo = data
-			data.forEach(x => {  
+			data.forEach(x => { 
                 this.lable.push(x.salarymonth);  
-				console.log(this.lable)
-				this.data.push(x.amount); 
-				console.log(this.data) 
+				 this.datachart.push(x.amount); 
+				// console.log(this.datachart) 
 				
 			  });  
 		})
+	console.log(this.lable)
+	console.log(this.datachart)	  
 	}
-
-	
-
+	SortData(col: string): void {
+		
+		if (this.sortColumn == col) {
+           if (this.sortOrder == 'asc')
+			this.sortOrder = 'desc';
+		  else
+			this.sortOrder = 'asc';
+		}
+		else {
+		  this.sortColumn = col;
+		  this.sortOrder = 'asc';
+		}
+		this.salaryInfo = this.salaryInfo.sort((a, b) => {
+		  if (a[col] < b[col])
+		  console.log(a)
+			return this.sortOrder == 'asc' ? -1 : 1;
+		  if (a[col] > b[col])
+			return this.sortOrder == 'asc' ? 1 : -1;
+		  return 0;
+		})
+	  }	
 
 }

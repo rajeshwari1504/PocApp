@@ -24,7 +24,7 @@ import { locale as frLang } from './config/i18n/fr';
 	// tslint:disable-next-line:component-selector
 	selector: 'body[m-root]',
 	templateUrl: './app.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	// changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements AfterViewInit, OnInit {
 	title = 'Metronic';

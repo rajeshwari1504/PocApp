@@ -1,8 +1,7 @@
 <div class="m-widget14">
-	<div class="chart-container" *ngIf="chartReady">
-		<canvas baseChart  width="150" height="100" 
-		 
-			[datasets]="barChartData"
+	<div class="chart-container"*ngIf="new_barChartData">
+		<canvas  baseChart width="200" height="160" 
+		  [datasets]="new_barChartData"
 			[labels]="barChartLabels"
 			[options]="barChartOptions"
 			[legend]="barChartLegend"

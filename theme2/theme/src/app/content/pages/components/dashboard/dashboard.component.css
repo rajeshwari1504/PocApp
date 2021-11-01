@@ -1,23 +1,23 @@
-body {
+/* body {
   font-family: "Open Sans", helvetica, arial;
-  }
- table{
+  } */
+ /* table{
   width: 400px; /* For Responsive design set 100% */
-  border-collapse: collapse;
+  /* border-collapse: collapse;
   margin: 30px 0px 30px;
   font-size: 14px;
-  }
- table tr {
+  } */ 
+ /* table tr {
   height: 40px;
   margin: left 100px;;
   }
  table th {
   font-size: 13px;
- }
- table td, th {
+ } */
+ /* table td { */
   /* padding: 6px 6px 6px 10px; */
   /* border: 1px solid; */
-  text-align:center;
+  /* text-align:center;
  }
  .bold_text {
   font-weight: initial;
@@ -28,7 +28,7 @@ hr.beautiful-line{
 }
 table.ex1 {
   padding-top: 10px;
-}
+} */
  /* CSS3 Zebra Striping */
  /* table tr:nth-of-type(odd) {
   /* background: #eee; */
@@ -56,3 +56,69 @@ table.ex1 {
   width: 25%;
   margin-top: 6px;
 } */
+/* Add your css styles here */
+h2 {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-weight:normal;
+}
+
+#fundData {
+  width: 400px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:12px;
+  text-align:left;
+  margin:0px auto;
+}
+
+#fundData thead th{
+  font-weight:normal;
+  background-color:#eaeaea;
+  position:relative;
+}
+
+#fundData, #fundData thead tr {
+  border-bottom:1px solid #ddd;
+  height: 40px;
+  margin: left 100px;;
+}
+
+#fundData th:hover {
+  background-color: #d0edf8;
+}
+
+#fundData tbody tr:nth-child(2n) {
+  background-color:#ecf6ff;
+}
+
+/*could have done this by assigning class as well*/
+#fundData tr td:nth-child(4), #fundData tr th:nth-child(4), #fundData tr td:nth-child(5), #fundData tr th:nth-child(5),
+#fundData tr td:nth-child(6), #fundData tr th:nth-child(6), #fundData tr td:nth-child(7), #fundData tr th:nth-child(7), 
+#fundData tr td:nth-child(8), #fundData tr th:nth-child(8){
+  text-align:right;
+}
+
+#fundData th, #fundData td {
+  padding: 10px 30px 10px 10px;
+}
+
+#fundData tr th:last-child, #fundData tr td:last-child {
+  padding-right:10px;   
+}
+#fundData th.asc:after, #fundData th.desc:after {
+  content:'';
+  position:absolute;
+  right:10px;
+  border:4px solid transparent;
+}
+
+#fundData th.asc:after {
+  top:calc(50% - 8px);
+  border-bottom-color:#999;
+}
+
+#fundData th.desc:after {
+  top:calc(50%);
+  border-top-color:#999;
+}
